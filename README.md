@@ -9,5 +9,6 @@ Versão 2:
 - Separação de conceitos: UI e gerenciamento de lista de tarefas em funções separadas
 - Itens são marcados como concluídos e não removidos inteiramente da lista
 
-Exercício:
+Exercício 1:
 - Adicionar na aplicação algum mecanismo que permita a utilização dos seguintes filtros para exibição dos itens: todos, apenas concluídos e apenas não concluídos
+- O repositório deverá ser nomeado como: **spodwe2_todo_app_inicial_exercicio_1**
