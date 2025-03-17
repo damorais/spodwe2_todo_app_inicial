@@ -4,3 +4,10 @@ Versão inicial da aplicação de lista de tarefas para a disciplina SPODWE2 - D
 
 Versão 1:
 - Implementação simples, apenas com manipulação do DOM, para gerenciamento de lista de tarefas. Problema: Alto acoplamento. Versão apenas ilustrativa de conceitos básicos.
+
+Versão 2:
+- Separação de conceitos: UI e gerenciamento de lista de tarefas em funções separadas
+- Itens são marcados como concluídos e não removidos inteiramente da lista
+
+Exercício:
+- Adicionar na aplicação algum mecanismo que permita a utilização dos seguintes filtros para exibição dos itens: todos, apenas concluídos e apenas não concluídos

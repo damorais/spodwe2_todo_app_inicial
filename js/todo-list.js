@@ -1,26 +1,57 @@
+const todos = [];
+
 document.getElementById("new-todo").addEventListener("keypress", function (e) {
     if (e.key === "Enter") {
-        addTodo();
+        const newTodoInput = document.getElementById("new-todo");
+        const todoText = newTodoInput.value.trim();
+        if (todoText === "") return;
+
+        addTodo(todoText);
+        newTodoInput.value = "";
+        renderTodos();
     }
 });
 
-function addTodo() {
-    const newTodoInput = document.getElementById("new-todo");
-    const todoText = newTodoInput.value.trim();
-    if (todoText === "") return;
+function renderTodos() {
+    const todoListUl = document.getElementById("todo-list");
 
-    const todoList = document.getElementById("todo-list");
-    const todoItem = document.createElement("li");
-    todoItem.textContent = todoText;
+    todoListUl.innerHTML = "";
 
-    const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Remover";
-    deleteButton.onclick = function () {
-        todoList.removeChild(todoItem);
+    for (const todo of todos) {
+        const todoItemLi = document.createElement("li");
+        todoItemLi.textContent = todo.text;
+
+        if (!todo.done) {
+            const markTodoAsDoneButton = document.createElement("button");
+            markTodoAsDoneButton.textContent = "Concluir";
+            markTodoAsDoneButton.onclick = function () {
+                todo.done = true;
+                renderTodos();
+            };
+            todoItemLi.appendChild(markTodoAsDoneButton);
+        } else {
+            todoItemLi.style.textDecoration = "line-through";
+        }
+
+        todoListUl.appendChild(todoItemLi);
+    }
+}
+
+function addTodo(todoText) {
+    const lastId = todos.length > 0 ? todos[todos.length - 1].id : 0;
+
+    const newTodo = {
+        id: lastId + 1,
+        text: todoText,
+        done: false,
     };
 
-    todoItem.appendChild(deleteButton);
-    todoList.appendChild(todoItem);
-
-    newTodoInput.value = "";
+    todos.push(newTodo);
 }
+
+function markTodoAsDone(todoId) {
+    const todo = todos.find((todo) => todo.id === todoId);
+    todo.done = true;
+}
+
+renderTodos();
