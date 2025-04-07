@@ -33,9 +33,9 @@ document
         renderTodos(TodoFilter.PENDING);
     });
 
-function renderTodos(filter = TodoFilter.ALL) {
+async function renderTodos(filter = TodoFilter.ALL) {
     const todoListUl = document.getElementById("todo-list");
-    const todos = getTodos();
+    const todos = await getTodos();
 
     todoListUl.innerHTML = "";
 
@@ -67,4 +67,5 @@ function renderTodos(filter = TodoFilter.ALL) {
 
 document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM fully loaded and parsed");
+    renderTodos();
 });

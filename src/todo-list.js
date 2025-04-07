@@ -1,7 +1,14 @@
 const todos = [];
 
-export function getTodos() {
-    return todos;
+export async function getTodos() {
+
+    return await fetch("http://localhost:3000/todos").then((response) => {
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+
+        return response.json();
+    });
 }
 
 export function addTodo(todoText) {
